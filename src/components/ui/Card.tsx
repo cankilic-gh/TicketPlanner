@@ -35,65 +35,25 @@ export function Card({ children, className, padding = 'md', hover = false }: Car
 interface StatCardProps {
   label: string;
   value: number | string;
-  trend?: number;
-  trendLabel?: string;
   icon?: ReactNode;
-  accentColor?: string;
   className?: string;
 }
 
 export function StatCard({
   label,
   value,
-  trend,
-  trendLabel,
   icon,
-  accentColor = '#4F46E5',
   className,
 }: StatCardProps) {
-  const isPositiveTrend = trend && trend > 0;
-  const isNegativeTrend = trend && trend < 0;
-
   return (
-    <Card className={cn('relative overflow-hidden', className)}>
-      <div
-        className="absolute top-0 left-0 w-1 h-full rounded-l-xl"
-        style={{ backgroundColor: accentColor }}
-      />
+    <Card className={cn('', className)}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm text-[#475569] font-medium">{label}</p>
+          <p className="text-sm text-[#64748B]">{label}</p>
           <p className="text-2xl font-semibold text-[#0F172A] mt-1">{value}</p>
-          {trend !== undefined && (
-            <div className="flex items-center gap-1 mt-2">
-              {isPositiveTrend && (
-                <svg className="w-4 h-4 text-[#10B981]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                </svg>
-              )}
-              {isNegativeTrend && (
-                <svg className="w-4 h-4 text-[#EF4444]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              )}
-              <span
-                className={cn(
-                  'text-xs font-medium',
-                  isPositiveTrend && 'text-[#10B981]',
-                  isNegativeTrend && 'text-[#EF4444]',
-                  !trend && 'text-[#6B7280]'
-                )}
-              >
-                {Math.abs(trend)}%{trendLabel && ` ${trendLabel}`}
-              </span>
-            </div>
-          )}
         </div>
         {icon && (
-          <div
-            className="p-2 rounded-lg"
-            style={{ backgroundColor: `${accentColor}15` }}
-          >
+          <div className="p-2 rounded-lg bg-[#F1F5F9]">
             {icon}
           </div>
         )}
