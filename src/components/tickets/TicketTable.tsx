@@ -82,10 +82,10 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
   return (
     <div className={cn('bg-white rounded-xl border border-[#E2E8F0] overflow-hidden', className)}>
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[1400px]">
           <thead>
             <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0]">
-              <th className="w-10 px-4 py-3">
+              <th className="w-12 px-4 py-3">
                 <input
                   type="checkbox"
                   checked={selectedTickets.length === tickets.length && tickets.length > 0}
@@ -93,19 +93,19 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   className="w-4 h-4 rounded border-[#E2E8F0] text-[#4F46E5] focus:ring-[#4F46E5]"
                 />
               </th>
-              <th className="w-10 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Pri</th>
-              <th className="w-20 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">ID</th>
-              <th className="w-8 px-2 py-3"></th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider min-w-[300px]">Title</th>
-              <th className="w-28 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Status</th>
-              <th className="w-24 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Assignee</th>
-              <th className="w-28 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Project</th>
-              <th className="w-32 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Labels</th>
-              <th className="w-20 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">AI ETA</th>
-              <th className="w-24 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Due Date</th>
-              <th className="w-20 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">SLA</th>
-              <th className="w-20 px-2 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Updated</th>
+              <th className="w-12 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Pri</th>
+              <th className="w-24 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">ID</th>
               <th className="w-10 px-2 py-3"></th>
+              <th className="min-w-[280px] px-4 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Title</th>
+              <th className="w-32 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Status</th>
+              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Assignee</th>
+              <th className="w-44 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Project</th>
+              <th className="w-36 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Labels</th>
+              <th className="w-24 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">AI ETA</th>
+              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Due Date</th>
+              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">SLA</th>
+              <th className="w-24 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Updated</th>
+              <th className="w-12 px-2 py-3"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E2E8F0]">
@@ -135,12 +135,12 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* Priority */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     <PriorityIndicator priority={ticket.priority} />
                   </td>
 
                   {/* Ticket ID */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     <div className="flex items-center gap-1 group/id">
                       <Link
                         href={`/tickets/${ticket.id}`}
@@ -175,12 +175,12 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* Status */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     <StatusBadge status={ticket.status} />
                   </td>
 
                   {/* Assignee */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     {assignees.length > 0 ? (
                       <div className="flex items-center gap-2">
                         <AvatarGroup
@@ -202,10 +202,10 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* Project */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     {project && (
                       <span
-                        className="text-xs px-2 py-0.5 rounded-full font-medium truncate inline-block max-w-full"
+                        className="text-xs px-2 py-1 rounded-full font-medium whitespace-nowrap"
                         style={{
                           backgroundColor: `${project.color}15`,
                           color: project.color,
@@ -217,8 +217,8 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* Labels */}
-                  <td className="px-2 py-3">
-                    <div className="flex items-center gap-1 flex-wrap">
+                  <td className="px-3 py-3">
+                    <div className="flex items-center gap-1">
                       {ticket.labels.slice(0, 2).map((label) => (
                         <LabelBadge
                           key={label}
@@ -233,9 +233,9 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* AI Predicted ETA */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     {ticket.aiPredictedEta && (
-                      <div className="flex items-center gap-1 text-xs text-[#8B5CF6]">
+                      <div className="flex items-center gap-1 text-xs text-[#8B5CF6] whitespace-nowrap">
                         <Sparkles size={12} />
                         <span>{ticket.aiPredictedEta}</span>
                       </div>
@@ -243,10 +243,10 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* Due Date */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     {ticket.dueDate && (
                       <div className={cn(
-                        'flex items-center gap-1 text-xs',
+                        'flex items-center gap-1 text-xs whitespace-nowrap',
                         isOverdue(ticket.dueDate) ? 'text-[#EF4444]' : 'text-[#64748B]'
                       )}>
                         {isOverdue(ticket.dueDate) && <AlertCircle size={12} />}
@@ -257,13 +257,13 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   </td>
 
                   {/* SLA */}
-                  <td className="px-2 py-3">
+                  <td className="px-3 py-3">
                     <SLAIndicator status={ticket.slaStatus} />
                   </td>
 
                   {/* Updated */}
-                  <td className="px-2 py-3">
-                    <span className="text-xs text-[#94A3B8]">
+                  <td className="px-3 py-3">
+                    <span className="text-xs text-[#94A3B8] whitespace-nowrap">
                       {formatRelativeTime(ticket.updatedAt)}
                     </span>
                   </td>
