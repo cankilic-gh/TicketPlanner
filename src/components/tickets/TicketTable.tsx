@@ -67,16 +67,24 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
   };
 
   const labelColors: Record<string, string> = {
-    frontend: '#3B82F6',
-    backend: '#10B981',
-    urgent: '#EF4444',
-    security: '#F59E0B',
-    api: '#8B5CF6',
-    database: '#06B6D4',
-    ui: '#EC4899',
-    mobile: '#F97316',
-    performance: '#6366F1',
-    responsive: '#14B8A6',
+    frontend: '#64748B',
+    backend: '#64748B',
+    urgent: '#DC2626',
+    security: '#64748B',
+    api: '#64748B',
+    database: '#64748B',
+    ui: '#64748B',
+    mobile: '#64748B',
+    performance: '#64748B',
+    responsive: '#64748B',
+    reports: '#64748B',
+    blocking: '#DC2626',
+    payments: '#64748B',
+    accessibility: '#64748B',
+    search: '#64748B',
+    import: '#64748B',
+    ux: '#64748B',
+    safari: '#64748B',
   };
 
   return (

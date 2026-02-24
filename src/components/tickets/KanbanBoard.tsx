@@ -48,13 +48,13 @@ function KanbanCard({ ticket }: KanbanCardProps) {
   const attachmentCount = Math.floor(Math.random() * 3);
 
   const labelColors: Record<string, string> = {
-    frontend: '#3B82F6',
-    backend: '#10B981',
-    urgent: '#EF4444',
-    security: '#F59E0B',
-    api: '#8B5CF6',
-    database: '#06B6D4',
-    ui: '#EC4899',
+    frontend: '#64748B',
+    backend: '#64748B',
+    urgent: '#DC2626',
+    security: '#64748B',
+    api: '#64748B',
+    database: '#64748B',
+    ui: '#64748B',
   };
 
   return (

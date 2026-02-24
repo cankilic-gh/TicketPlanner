@@ -23,7 +23,7 @@ export default function DashboardPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-semibold text-[#0F172A]">
-            {greeting}, {currentUser.name.split(' ')[0]} 👋
+            {greeting}, {currentUser.name.split(' ')[0]}
           </h1>
           <p className="text-[#64748B] mt-1">{today}</p>
         </div>

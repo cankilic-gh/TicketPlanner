@@ -61,20 +61,23 @@ interface LabelBadgeProps {
   className?: string;
 }
 
-export function LabelBadge({ label, color = '#6366F1', onRemove, className }: LabelBadgeProps) {
+export function LabelBadge({ label, color = '#64748B', onRemove, className }: LabelBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium text-white',
+        'inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium',
         className
       )}
-      style={{ backgroundColor: color }}
+      style={{
+        backgroundColor: `${color}15`,
+        color: color,
+      }}
     >
       {label}
       {onRemove && (
         <button
           onClick={onRemove}
-          className="hover:bg-white/20 rounded-full p-0.5 transition-colors"
+          className="hover:bg-black/10 rounded p-0.5 transition-colors"
         >
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
