@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { StatusBadge, PriorityIndicator, Avatar, LabelBadge } from '@/components/ui';
+import { cn, getInitials, getAvatarColor } from '@/lib/utils';
+import { StatusBadge, PriorityIndicator, LabelBadge } from '@/components/ui';
 import { mockTickets, mockUsers, mockProjects } from '@/data/mockData';
 import { formatRelativeTime } from '@/lib/utils';
 import { TYPE_CONFIG, type Ticket } from '@/types';
@@ -162,37 +162,21 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   {/* Assignee */}
                   <td className="px-3 py-3">
                     {assignees.length > 0 ? (
-                      <div className="flex items-center">
-                        {assignees.length === 1 ? (
-                          <div className="flex items-center gap-2">
-                            <Avatar
-                              src={assignees[0]!.avatar}
-                              name={assignees[0]!.name}
-                              size="xs"
-                            />
-                            <span className="text-xs text-[#64748B] truncate max-w-[80px]">
-                              {assignees[0]!.name.split(' ')[0]}
-                            </span>
+                      <div className="flex items-center -space-x-1">
+                        {assignees.slice(0, 3).map((u) => (
+                          <div
+                            key={u!.id}
+                            className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium text-white ring-2 ring-white"
+                            style={{ backgroundColor: getAvatarColor(u!.name) }}
+                            title={u!.name}
+                          >
+                            {getInitials(u!.name)}
                           </div>
-                        ) : (
-                          <div className="flex items-center">
-                            <div className="flex -space-x-2">
-                              {assignees.slice(0, 3).map((u) => (
-                                <Avatar
-                                  key={u!.id}
-                                  src={u!.avatar}
-                                  name={u!.name}
-                                  size="xs"
-                                  className="ring-2 ring-white"
-                                />
-                              ))}
-                            </div>
-                            {assignees.length > 3 && (
-                              <span className="text-xs text-[#64748B] ml-1">
-                                +{assignees.length - 3}
-                              </span>
-                            )}
-                          </div>
+                        ))}
+                        {assignees.length > 3 && (
+                          <span className="text-xs text-[#64748B] ml-2">
+                            +{assignees.length - 3}
+                          </span>
                         )}
                       </div>
                     ) : (

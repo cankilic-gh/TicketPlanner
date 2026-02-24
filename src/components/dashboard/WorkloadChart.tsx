@@ -1,7 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { Avatar } from '@/components/ui';
+import { cn, getInitials, getAvatarColor } from '@/lib/utils';
 import { mockUsers } from '@/data/mockData';
 import type { WorkloadLevel } from '@/types';
 
@@ -40,13 +39,12 @@ export function WorkloadChart({ className }: WorkloadChartProps) {
 
           return (
             <div key={user.id} className="flex items-center gap-3">
-              <Avatar
-                src={user.avatar}
-                name={user.name}
-                size="sm"
-                showOnline
-                isOnline={user.isOnline}
-              />
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium text-white flex-shrink-0"
+                style={{ backgroundColor: getAvatarColor(user.name) }}
+              >
+                {getInitials(user.name)}
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-medium text-[#0F172A] truncate">{user.name}</span>
