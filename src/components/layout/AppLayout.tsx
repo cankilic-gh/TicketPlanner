@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
+import { CommandPalette, useCommandPalette } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 interface AppLayoutProps {
@@ -12,6 +13,7 @@ interface AppLayoutProps {
 
 export function AppLayout({ children, breadcrumbs = [] }: AppLayoutProps) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const commandPalette = useCommandPalette();
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
@@ -22,6 +24,7 @@ export function AppLayout({ children, breadcrumbs = [] }: AppLayoutProps) {
       <Topbar
         breadcrumbs={breadcrumbs}
         sidebarCollapsed={sidebarCollapsed}
+        onOpenCommandPalette={commandPalette.open}
       />
       <main
         className={cn(
@@ -33,6 +36,12 @@ export function AppLayout({ children, breadcrumbs = [] }: AppLayoutProps) {
           {children}
         </div>
       </main>
+
+      {/* Command Palette (⌘K) */}
+      <CommandPalette
+        isOpen={commandPalette.isOpen}
+        onClose={commandPalette.close}
+      />
     </div>
   );
 }

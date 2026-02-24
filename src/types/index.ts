@@ -56,18 +56,24 @@ export interface User {
 }
 
 // Project Types
+export type ProjectStatus = 'active' | 'on-hold' | 'completed' | 'planning';
+
 export interface Project {
   id: string;
   name: string;
   color: string;
   description: string;
   clientId?: string;
+  status: ProjectStatus;
+  teamIds: string[];
   ticketCount: number;
   openTickets: number;
   resolvedTickets: number;
   overdueTickets: number;
   progress: number;
+  health: number;
   lastActivity: string;
+  updatedAt: string;
 }
 
 // Client Types

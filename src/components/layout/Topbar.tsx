@@ -21,9 +21,10 @@ interface BreadcrumbItem {
 interface TopbarProps {
   breadcrumbs?: BreadcrumbItem[];
   sidebarCollapsed: boolean;
+  onOpenCommandPalette?: () => void;
 }
 
-export function Topbar({ breadcrumbs = [], sidebarCollapsed }: TopbarProps) {
+export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalette }: TopbarProps) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -85,17 +86,20 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed }: TopbarProps) {
 
       {/* Search */}
       <div className="flex-1 max-w-md mx-auto">
-        <div className="relative">
+        <button
+          onClick={onOpenCommandPalette}
+          className="w-full relative"
+        >
           <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8]" />
-          <input
-            type="text"
-            placeholder="Search tickets, projects, people... (⌘K)"
-            className="w-full h-9 pl-10 pr-4 rounded-lg bg-[#F1F5F9] border border-transparent text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-colors"
-          />
+          <div
+            className="w-full h-9 pl-10 pr-4 rounded-lg bg-[#F1F5F9] border border-transparent text-sm text-[#94A3B8] flex items-center cursor-pointer hover:bg-[#E2E8F0] transition-colors"
+          >
+            Search tickets, projects, people... (⌘K)
+          </div>
           <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
             <Sparkles size={14} className="text-[#94A3B8]" />
           </div>
-        </div>
+        </button>
       </div>
 
       {/* Right Actions */}
