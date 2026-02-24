@@ -61,6 +61,7 @@ export type ProjectStatus = 'active' | 'on-hold' | 'completed' | 'planning';
 export interface Project {
   id: string;
   name: string;
+  code: string;
   color: string;
   description: string;
   clientId?: string;

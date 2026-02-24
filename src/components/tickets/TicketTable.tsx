@@ -89,7 +89,7 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
               <th className="min-w-[300px] px-4 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Title</th>
               <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Status</th>
               <th className="w-36 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Assignee</th>
-              <th className="w-40 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Project</th>
+              <th className="w-20 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Project</th>
               <th className="w-32 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Labels</th>
               <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Due Date</th>
               <th className="w-24 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Updated</th>
@@ -188,13 +188,14 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   <td className="px-3 py-3">
                     {project && (
                       <span
-                        className="text-xs px-2 py-1 rounded font-medium whitespace-nowrap"
+                        className="text-xs px-2 py-1 rounded font-medium"
                         style={{
                           backgroundColor: `${project.color}15`,
                           color: project.color,
                         }}
+                        title={project.name}
                       >
-                        {project.name}
+                        {project.code}
                       </span>
                     )}
                   </td>
