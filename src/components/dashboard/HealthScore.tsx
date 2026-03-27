@@ -35,7 +35,7 @@ export function HealthScore({ score, message, className }: HealthScoreProps) {
             cy="50"
             r="45"
             fill="none"
-            stroke="#E2E8F0"
+            stroke="var(--color-stroke-bg)"
             strokeWidth="8"
           />
           <circle
@@ -54,12 +54,12 @@ export function HealthScore({ score, message, className }: HealthScoreProps) {
         {/* Score text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className="text-2xl font-bold" style={{ color }}>{score}</span>
-          <span className="text-xs text-[#64748B]">{getLabel()}</span>
+          <span className="text-xs text-[var(--color-text-muted)]">{getLabel()}</span>
         </div>
       </div>
       <div className="flex-1">
-        <h4 className="text-sm font-semibold text-[#0F172A]">Project Health</h4>
-        <p className="text-xs text-[#64748B] mt-1">{message}</p>
+        <h4 className="text-sm font-semibold text-[var(--color-text-primary)]">Project Health</h4>
+        <p className="text-xs text-[var(--color-text-muted)] mt-1">{message}</p>
       </div>
     </div>
   );

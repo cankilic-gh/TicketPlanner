@@ -37,36 +37,36 @@ export function FocusQueue({ className }: FocusQueueProps) {
   };
 
   return (
-    <div className={cn('bg-white rounded-xl border border-[#E2E8F0] overflow-hidden', className)}>
-      <div className="flex items-center justify-between px-5 py-4 border-b border-[#E2E8F0]">
-        <h3 className="font-semibold text-[#0F172A]">My Focus</h3>
+    <div className={cn('bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] overflow-hidden', className)}>
+      <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border)]">
+        <h3 className="font-semibold text-[var(--color-text-primary)]">My Focus</h3>
         <div className="flex items-center gap-2">
-          <button className="text-xs px-3 py-1 rounded-full bg-[#4F46E5] text-white font-medium">All</button>
-          <button className="text-xs px-3 py-1 rounded-full text-[#64748B] hover:bg-[#F1F5F9]">Today</button>
-          <button className="text-xs px-3 py-1 rounded-full text-[#64748B] hover:bg-[#F1F5F9]">This Week</button>
+          <button className="text-xs px-3 py-1 rounded-full bg-[var(--color-brand-primary)] text-white font-medium">All</button>
+          <button className="text-xs px-3 py-1 rounded-full text-[var(--color-text-muted)] hover:bg-[var(--color-bg-tertiary)]">Today</button>
+          <button className="text-xs px-3 py-1 rounded-full text-[var(--color-text-muted)] hover:bg-[var(--color-bg-tertiary)]">This Week</button>
         </div>
       </div>
 
-      <div className="divide-y divide-[#E2E8F0]">
+      <div className="divide-y divide-[var(--color-border)]">
         {focusTickets.map((ticket) => (
           <Link
             key={ticket.id}
             href={`/tickets/${ticket.id}`}
-            className="flex items-center gap-4 px-5 py-3 hover:bg-[#F8FAFC] transition-colors group"
+            className="flex items-center gap-4 px-5 py-3 hover:bg-[var(--color-bg-secondary)] transition-colors group"
           >
             {/* Priority */}
             <PriorityIndicator priority={ticket.priority} />
 
             {/* Ticket ID */}
-            <span className="font-mono text-xs text-[#64748B] w-16">{ticket.id}</span>
+            <span className="font-mono text-xs text-[var(--color-text-muted)] w-16">{ticket.id}</span>
 
             {/* Title & AI Summary */}
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-[#0F172A] truncate group-hover:text-[#4F46E5] transition-colors">
+              <p className="text-sm font-medium text-[var(--color-text-primary)] truncate group-hover:text-[var(--color-brand-text)] transition-colors">
                 {ticket.title}
               </p>
               {ticket.aiSummary && (
-                <p className="text-xs text-[#94A3B8] truncate mt-0.5">{ticket.aiSummary}</p>
+                <p className="text-xs text-[var(--color-text-tertiary)] truncate mt-0.5">{ticket.aiSummary}</p>
               )}
             </div>
 
@@ -88,7 +88,7 @@ export function FocusQueue({ className }: FocusQueueProps) {
             {ticket.dueDate && (
               <div className={cn(
                 'flex items-center gap-1 text-xs',
-                isOverdue(ticket.dueDate) ? 'text-[#EF4444]' : 'text-[#64748B]'
+                isOverdue(ticket.dueDate) ? 'text-[#EF4444]' : 'text-[var(--color-text-muted)]'
               )}>
                 {isOverdue(ticket.dueDate) && <AlertCircle size={12} />}
                 <Clock size={12} />
@@ -107,8 +107,8 @@ export function FocusQueue({ className }: FocusQueueProps) {
         ))}
       </div>
 
-      <div className="px-5 py-3 border-t border-[#E2E8F0]">
-        <Link href="/my-tickets" className="text-sm text-[#4F46E5] hover:underline">
+      <div className="px-5 py-3 border-t border-[var(--color-border)]">
+        <Link href="/my-tickets" className="text-sm text-[var(--color-brand-text)] hover:underline">
           View All My Tickets →
         </Link>
       </div>

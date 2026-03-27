@@ -60,7 +60,7 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
   if (viewMode === 'list') {
     return (
       <Link href={`/projects/${project.id}`} className="block">
-        <div className="flex items-center gap-4 p-4 bg-white rounded-xl border border-[#E2E8F0] hover:shadow-md transition-shadow">
+        <div className="flex items-center gap-4 p-4 bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] hover:shadow-md transition-shadow">
           {/* Project Icon */}
           <div
             className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg"
@@ -72,7 +72,7 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
           {/* Project Info */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-[#0F172A] truncate">{project.name}</h3>
+              <h3 className="font-semibold text-[var(--color-text-primary)] truncate">{project.name}</h3>
               <span
                 className="px-2 py-0.5 rounded-full text-xs font-medium capitalize"
                 style={{
@@ -83,16 +83,16 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
                 {project.status.replace('-', ' ')}
               </span>
             </div>
-            <p className="text-sm text-[#64748B] truncate">{client?.name || 'Internal Project'}</p>
+            <p className="text-sm text-[var(--color-text-muted)] truncate">{client?.name || 'Internal Project'}</p>
           </div>
 
           {/* Progress */}
           <div className="w-32">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-[#64748B]">Progress</span>
-              <span className="text-xs font-medium text-[#0F172A]">{progress}%</span>
+              <span className="text-xs text-[var(--color-text-muted)]">Progress</span>
+              <span className="text-xs font-medium text-[var(--color-text-primary)]">{progress}%</span>
             </div>
-            <div className="h-1.5 bg-[#E2E8F0] rounded-full overflow-hidden">
+            <div className="h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full transition-all"
                 style={{ width: `${progress}%`, backgroundColor: project.color || '#4F46E5' }}
@@ -102,7 +102,7 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
 
           {/* Stats */}
           <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-1.5 text-[#64748B]">
+            <div className="flex items-center gap-1.5 text-[var(--color-text-muted)]">
               <Ticket size={14} />
               <span>{totalTickets}</span>
             </div>
@@ -112,7 +112,7 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
                 <span>{overdueTickets}</span>
               </div>
             )}
-            <div className="flex items-center gap-1.5 text-[#64748B]">
+            <div className="flex items-center gap-1.5 text-[var(--color-text-muted)]">
               <Users size={14} />
               <span>{teamMembers.length}</span>
             </div>
@@ -143,7 +143,7 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
           </div>
 
           {/* Actions */}
-          <button className="p-2 rounded-lg hover:bg-[#F1F5F9] text-[#64748B]">
+          <button className="p-2 rounded-lg hover:bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]">
             <MoreHorizontal size={16} />
           </button>
         </div>
@@ -164,10 +164,10 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
               {project.name.charAt(0)}
             </div>
             <div>
-              <h3 className="font-semibold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">
+              <h3 className="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-brand-text)] transition-colors">
                 {project.name}
               </h3>
-              <p className="text-sm text-[#64748B]">{client?.name || 'Internal Project'}</p>
+              <p className="text-sm text-[var(--color-text-muted)]">{client?.name || 'Internal Project'}</p>
             </div>
           </div>
           <span
@@ -183,18 +183,18 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
 
         {/* Description */}
         {project.description && (
-          <p className="text-sm text-[#64748B] mb-4 line-clamp-2">{project.description}</p>
+          <p className="text-sm text-[var(--color-text-muted)] mb-4 line-clamp-2">{project.description}</p>
         )}
 
         {/* Progress Bar */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-xs text-[#64748B]">Progress</span>
-            <span className="text-xs font-medium text-[#0F172A]">
+            <span className="text-xs text-[var(--color-text-muted)]">Progress</span>
+            <span className="text-xs font-medium text-[var(--color-text-primary)]">
               {completedTickets}/{totalTickets} tickets ({progress}%)
             </span>
           </div>
-          <div className="h-2 bg-[#E2E8F0] rounded-full overflow-hidden">
+          <div className="h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
             <div
               className="h-full rounded-full transition-all"
               style={{ width: `${progress}%`, backgroundColor: project.color || '#4F46E5' }}
@@ -204,29 +204,29 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <div className="text-center p-2 bg-[#F8FAFC] rounded-lg">
-            <div className="text-lg font-semibold text-[#0F172A]">{totalTickets}</div>
-            <div className="text-xs text-[#64748B]">Tickets</div>
+          <div className="text-center p-2 bg-[var(--color-bg-secondary)] rounded-lg">
+            <div className="text-lg font-semibold text-[var(--color-text-primary)]">{totalTickets}</div>
+            <div className="text-xs text-[var(--color-text-muted)]">Tickets</div>
           </div>
-          <div className="text-center p-2 bg-[#F8FAFC] rounded-lg">
-            <div className={cn('text-lg font-semibold', overdueTickets > 0 ? 'text-[#EF4444]' : 'text-[#0F172A]')}>
+          <div className="text-center p-2 bg-[var(--color-bg-secondary)] rounded-lg">
+            <div className={cn('text-lg font-semibold', overdueTickets > 0 ? 'text-[#EF4444]' : 'text-[var(--color-text-primary)]')}>
               {overdueTickets}
             </div>
-            <div className="text-xs text-[#64748B]">Overdue</div>
+            <div className="text-xs text-[var(--color-text-muted)]">Overdue</div>
           </div>
-          <div className="text-center p-2 bg-[#F8FAFC] rounded-lg">
+          <div className="text-center p-2 bg-[var(--color-bg-secondary)] rounded-lg">
             <div
               className="text-lg font-semibold"
               style={{ color: healthColor }}
             >
               {healthScore}
             </div>
-            <div className="text-xs text-[#64748B]">Health</div>
+            <div className="text-xs text-[var(--color-text-muted)]">Health</div>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-[#E2E8F0]">
+        <div className="flex items-center justify-between pt-3 border-t border-[var(--color-border)]">
           <AvatarGroup
             users={teamMembers.slice(0, 4).map((u) => ({
               id: u!.id,
@@ -237,7 +237,7 @@ function ProjectCard({ project, viewMode }: ProjectCardProps) {
             size="sm"
           />
 
-          <div className="flex items-center gap-1.5 text-xs text-[#64748B]">
+          <div className="flex items-center gap-1.5 text-xs text-[var(--color-text-muted)]">
             <Calendar size={12} />
             <span>Updated {formatRelativeTime(project.updatedAt)}</span>
           </div>
@@ -270,8 +270,8 @@ export default function ProjectsPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-semibold text-[#0F172A]">Projects</h1>
-          <p className="text-[#64748B] mt-1">{mockProjects.length} projects total</p>
+          <h1 className="text-2xl font-semibold text-[var(--color-text-primary)]">Projects</h1>
+          <p className="text-[var(--color-text-muted)] mt-1">{mockProjects.length} projects total</p>
         </div>
         <Button>
           <Plus size={16} />
@@ -284,18 +284,18 @@ export default function ProjectsPage() {
         <Card className="!p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-[#64748B]">Total Projects</p>
-              <p className="text-2xl font-semibold text-[#0F172A]">{projectStats.total}</p>
+              <p className="text-sm text-[var(--color-text-muted)]">Total Projects</p>
+              <p className="text-2xl font-semibold text-[var(--color-text-primary)]">{projectStats.total}</p>
             </div>
-            <div className="w-10 h-10 bg-[#4F46E5]/10 rounded-lg flex items-center justify-center">
-              <LayoutGrid className="text-[#4F46E5]" size={20} />
+            <div className="w-10 h-10 bg-[var(--color-brand-primary)]/10 rounded-lg flex items-center justify-center">
+              <LayoutGrid className="text-[var(--color-brand-text)]" size={20} />
             </div>
           </div>
         </Card>
         <Card className="!p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-[#64748B]">Active</p>
+              <p className="text-sm text-[var(--color-text-muted)]">Active</p>
               <p className="text-2xl font-semibold text-[#10B981]">{projectStats.active}</p>
             </div>
             <div className="w-10 h-10 bg-[#10B981]/10 rounded-lg flex items-center justify-center">
@@ -306,7 +306,7 @@ export default function ProjectsPage() {
         <Card className="!p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-[#64748B]">On Hold</p>
+              <p className="text-sm text-[var(--color-text-muted)]">On Hold</p>
               <p className="text-2xl font-semibold text-[#F59E0B]">{projectStats.onHold}</p>
             </div>
             <div className="w-10 h-10 bg-[#F59E0B]/10 rounded-lg flex items-center justify-center">
@@ -317,7 +317,7 @@ export default function ProjectsPage() {
         <Card className="!p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-[#64748B]">Completed</p>
+              <p className="text-sm text-[var(--color-text-muted)]">Completed</p>
               <p className="text-2xl font-semibold text-[#6B7280]">{projectStats.completed}</p>
             </div>
             <div className="w-10 h-10 bg-[#6B7280]/10 rounded-lg flex items-center justify-center">
@@ -332,13 +332,13 @@ export default function ProjectsPage() {
         <div className="flex items-center gap-3">
           {/* Search */}
           <div className="relative">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8]" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)]" />
             <input
               type="text"
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-64 h-9 pl-9 pr-3 rounded-lg bg-white border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5]"
+              className="w-64 h-9 pl-9 pr-3 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-sm text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] focus:outline-none focus:border-[var(--color-brand-primary)] focus:ring-1 focus:ring-[var(--color-brand-primary)]"
             />
           </div>
 
@@ -346,7 +346,7 @@ export default function ProjectsPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="h-9 px-3 rounded-lg border border-[#E2E8F0] bg-white text-sm text-[#475569] focus:outline-none focus:border-[#4F46E5]"
+            className="h-9 px-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-primary)] text-sm text-[var(--color-text-secondary)] focus:outline-none focus:border-[var(--color-brand-primary)]"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -357,12 +357,12 @@ export default function ProjectsPage() {
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center gap-1 p-1 bg-[#F1F5F9] rounded-lg">
+        <div className="flex items-center gap-1 p-1 bg-[var(--color-bg-tertiary)] rounded-lg">
           <button
             onClick={() => setViewMode('grid')}
             className={cn(
               'p-1.5 rounded-md transition-colors',
-              viewMode === 'grid' ? 'bg-white text-[#0F172A] shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+              viewMode === 'grid' ? 'bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] shadow-sm' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
             )}
           >
             <LayoutGrid size={16} />
@@ -371,7 +371,7 @@ export default function ProjectsPage() {
             onClick={() => setViewMode('list')}
             className={cn(
               'p-1.5 rounded-md transition-colors',
-              viewMode === 'list' ? 'bg-white text-[#0F172A] shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+              viewMode === 'list' ? 'bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] shadow-sm' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
             )}
           >
             <List size={16} />
@@ -388,7 +388,7 @@ export default function ProjectsPage() {
 
       {filteredProjects.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-[#64748B]">No projects found matching your criteria.</p>
+          <p className="text-[var(--color-text-muted)]">No projects found matching your criteria.</p>
         </div>
       )}
     </AppLayout>

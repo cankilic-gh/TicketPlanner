@@ -96,12 +96,12 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
             {/* Ticket ID & Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-sm text-[#64748B]">{ticket.id}</span>
-                <button className="p-1 hover:bg-[#F1F5F9] rounded" title="Copy ID">
-                  <Copy size={14} className="text-[#94A3B8]" />
+                <span className="font-mono text-sm text-[var(--color-text-muted)]">{ticket.id}</span>
+                <button className="p-1 hover:bg-[var(--color-bg-tertiary)] rounded" title="Copy ID">
+                  <Copy size={14} className="text-[var(--color-text-tertiary)]" />
                 </button>
-                <button className="p-1 hover:bg-[#F1F5F9] rounded" title="Copy Link">
-                  <LinkIcon size={14} className="text-[#94A3B8]" />
+                <button className="p-1 hover:bg-[var(--color-bg-tertiary)] rounded" title="Copy Link">
+                  <LinkIcon size={14} className="text-[var(--color-text-tertiary)]" />
                 </button>
               </div>
               <div className="flex items-center gap-2">
@@ -117,15 +117,15 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Title */}
             <div className="group flex items-start gap-2 mb-3">
-              <h1 className="text-xl font-semibold text-[#0F172A] flex-1">{ticket.title}</h1>
-              <button className="opacity-0 group-hover:opacity-100 p-1 hover:bg-[#F1F5F9] rounded transition-opacity">
-                <Pencil size={14} className="text-[#94A3B8]" />
+              <h1 className="text-xl font-semibold text-[var(--color-text-primary)] flex-1">{ticket.title}</h1>
+              <button className="opacity-0 group-hover:opacity-100 p-1 hover:bg-[var(--color-bg-tertiary)] rounded transition-opacity">
+                <Pencil size={14} className="text-[var(--color-text-tertiary)]" />
               </button>
             </div>
 
             {/* AI Summary */}
             {ticket.aiSummary && (
-              <div className="flex items-start gap-2 mb-4 text-sm text-[#64748B]">
+              <div className="flex items-start gap-2 mb-4 text-sm text-[var(--color-text-muted)]">
                 <Sparkles size={14} className="text-[#8B5CF6] mt-0.5" />
                 <span>{ticket.aiSummary}</span>
               </div>
@@ -143,17 +143,17 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
                     <div
                       className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                         isCurrent
-                          ? 'bg-[#4F46E5] text-white'
+                          ? 'bg-[var(--color-brand-primary)] text-white'
                           : isCompleted
-                            ? 'bg-[#D1FAE5] text-[#059669]'
-                            : 'bg-[#F1F5F9] text-[#94A3B8]'
+                            ? 'bg-[var(--color-badge-success-bg)] text-[var(--color-badge-success-text)]'
+                            : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-tertiary)]'
                       }`}
                     >
                       {isCompleted && <CheckCircle2 size={12} />}
                       <span>{config.label}</span>
                     </div>
                     {index < statusFlow.length - 1 && (
-                      <ChevronRight size={16} className="text-[#D1D5DB] mx-1" />
+                      <ChevronRight size={16} className="text-[var(--color-border-hover)] mx-1" />
                     )}
                   </div>
                 );
@@ -163,8 +163,8 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Description */}
           <Card>
-            <h3 className="font-semibold text-[#0F172A] mb-4">Description</h3>
-            <div className="prose prose-sm max-w-none text-[#475569]">
+            <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Description</h3>
+            <div className="prose prose-sm max-w-none text-[var(--color-text-secondary)]">
               <p>{ticket.description}</p>
               <h4>Steps to Reproduce:</h4>
               <ol>
@@ -183,30 +183,30 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Git Integration */}
           <Card>
-            <h3 className="font-semibold text-[#0F172A] mb-4">Git Integration</h3>
+            <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Git Integration</h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 p-3 bg-[#F8FAFC] rounded-lg">
-                <GitBranch size={16} className="text-[#64748B]" />
-                <span className="font-mono text-sm text-[#475569]">fix/safari-login-500-error</span>
-                <button className="ml-auto p-1 hover:bg-[#E2E8F0] rounded">
-                  <Copy size={12} className="text-[#94A3B8]" />
+              <div className="flex items-center gap-3 p-3 bg-[var(--color-bg-secondary)] rounded-lg">
+                <GitBranch size={16} className="text-[var(--color-text-muted)]" />
+                <span className="font-mono text-sm text-[var(--color-text-secondary)]">fix/safari-login-500-error</span>
+                <button className="ml-auto p-1 hover:bg-[var(--color-border)] rounded">
+                  <Copy size={12} className="text-[var(--color-text-tertiary)]" />
                 </button>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-[#F8FAFC] rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-[var(--color-bg-secondary)] rounded-lg">
                 <GitPullRequest size={16} className="text-[#8B5CF6]" />
-                <span className="text-sm text-[#475569]">PR #234: Fix Safari WebSocket handling</span>
-                <span className="ml-auto px-2 py-0.5 bg-[#FEF3C7] text-[#D97706] text-xs font-medium rounded">Draft</span>
+                <span className="text-sm text-[var(--color-text-secondary)]">PR #234: Fix Safari WebSocket handling</span>
+                <span className="ml-auto px-2 py-0.5 bg-[var(--color-badge-warning-bg)] text-[var(--color-badge-warning-text)] text-xs font-medium rounded">Draft</span>
               </div>
             </div>
           </Card>
 
           {/* Activity & Comments */}
           <Card>
-            <div className="flex items-center gap-4 mb-4 border-b border-[#E2E8F0] pb-3">
-              <button className="text-sm font-medium text-[#4F46E5] border-b-2 border-[#4F46E5] pb-3 -mb-3">All</button>
-              <button className="text-sm font-medium text-[#64748B] hover:text-[#0F172A] pb-3 -mb-3">Comments</button>
-              <button className="text-sm font-medium text-[#64748B] hover:text-[#0F172A] pb-3 -mb-3">Activity</button>
-              <button className="text-sm font-medium text-[#64748B] hover:text-[#0F172A] pb-3 -mb-3">Internal Only</button>
+            <div className="flex items-center gap-4 mb-4 border-b border-[var(--color-border)] pb-3">
+              <button className="text-sm font-medium text-[var(--color-brand-text)] border-b-2 border-[var(--color-brand-primary)] pb-3 -mb-3">All</button>
+              <button className="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] pb-3 -mb-3">Comments</button>
+              <button className="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] pb-3 -mb-3">Activity</button>
+              <button className="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] pb-3 -mb-3">Internal Only</button>
             </div>
 
             {/* Comments List */}
@@ -219,28 +219,28 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
                   <div
                     key={comment.id}
                     className={`p-4 rounded-lg ${
-                      isInternal ? 'bg-[#FFF7ED] border-l-4 border-[#F59E0B]' : 'bg-[#F8FAFC]'
+                      isInternal ? 'bg-[var(--color-bg-warning)] border-l-4 border-[#F59E0B]' : 'bg-[var(--color-bg-secondary)]'
                     }`}
                   >
                     <div className="flex items-start gap-3">
                       <Avatar src={user?.avatar} name={user?.name || 'Unknown'} size="sm" />
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-medium text-sm text-[#0F172A]">{user?.name}</span>
-                          <span className="text-xs text-[#94A3B8]">{formatRelativeTime(comment.createdAt)}</span>
+                          <span className="font-medium text-sm text-[var(--color-text-primary)]">{user?.name}</span>
+                          <span className="text-xs text-[var(--color-text-tertiary)]">{formatRelativeTime(comment.createdAt)}</span>
                           {isInternal ? (
-                            <span className="flex items-center gap-1 text-xs text-[#D97706]">
+                            <span className="flex items-center gap-1 text-xs text-[var(--color-badge-warning-text)]">
                               <Lock size={10} />
                               Internal
                             </span>
                           ) : (
-                            <span className="flex items-center gap-1 text-xs text-[#059669]">
+                            <span className="flex items-center gap-1 text-xs text-[var(--color-badge-success-text)]">
                               <Globe size={10} />
                               Client visible
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-[#475569]">{comment.content}</p>
+                        <p className="text-sm text-[var(--color-text-secondary)]">{comment.content}</p>
                       </div>
                     </div>
                   </div>
@@ -249,13 +249,13 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
             </div>
 
             {/* Comment Input */}
-            <div className="border-t border-[#E2E8F0] pt-4">
+            <div className="border-t border-[var(--color-border)] pt-4">
               <div className="flex items-center gap-2 mb-3">
-                <button className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium bg-[#FFF7ED] text-[#D97706]">
+                <button className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium bg-[var(--color-bg-warning)] text-[var(--color-badge-warning-text)]">
                   <Lock size={12} />
                   Internal Note
                 </button>
-                <button className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-[#64748B] hover:bg-[#F1F5F9]">
+                <button className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-bg-tertiary)]">
                   <Globe size={12} />
                   Client Reply
                 </button>
@@ -265,13 +265,13 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
                 <div className="flex-1">
                   <textarea
                     placeholder="Write a comment..."
-                    className="w-full p-3 border border-[#E2E8F0] rounded-lg text-sm resize-none focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5]"
+                    className="w-full p-3 border border-[var(--color-border)] rounded-lg text-sm resize-none focus:outline-none focus:border-[var(--color-brand-primary)] focus:ring-1 focus:ring-[var(--color-brand-primary)]"
                     rows={3}
                   />
                   <div className="flex items-center justify-between mt-2">
                     <div className="flex items-center gap-2">
-                      <button className="p-1.5 hover:bg-[#F1F5F9] rounded">
-                        <Paperclip size={16} className="text-[#64748B]" />
+                      <button className="p-1.5 hover:bg-[var(--color-bg-tertiary)] rounded">
+                        <Paperclip size={16} className="text-[var(--color-text-muted)]" />
                       </button>
                     </div>
                     <Button size="sm">
@@ -289,7 +289,7 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
         <div className="space-y-4">
           {/* Status */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Status</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Status</label>
             <div className="mt-2">
               <StatusBadge status={ticket.status} />
             </div>
@@ -297,7 +297,7 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Priority */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Priority</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Priority</label>
             <div className="mt-2 flex items-center gap-2">
               <PriorityIndicator priority={ticket.priority} showLabel />
             </div>
@@ -305,16 +305,16 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Type */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Type</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Type</label>
             <div className="mt-2 flex items-center gap-2">
               <span>{typeConfig.icon}</span>
-              <span className="text-sm text-[#0F172A]">{typeConfig.label}</span>
+              <span className="text-sm text-[var(--color-text-primary)]">{typeConfig.label}</span>
             </div>
           </Card>
 
           {/* Assignee */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Assignee</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Assignee</label>
             <div className="mt-2 space-y-2">
               {assignees.length > 0 ? (
                 assignees.map((user) => (
@@ -328,7 +328,7 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
                       showWorkload
                       workloadLevel={user!.workloadLevel}
                     />
-                    <span className="text-sm text-[#0F172A]">{user!.name}</span>
+                    <span className="text-sm text-[var(--color-text-primary)]">{user!.name}</span>
                   </div>
                 ))
               ) : (
@@ -342,28 +342,28 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Reporter */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Reporter</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Reporter</label>
             <div className="mt-2 flex items-center gap-2">
               <Avatar src={reporter?.avatar} name={reporter?.name || 'Unknown'} size="sm" />
-              <span className="text-sm text-[#0F172A]">{reporter?.name}</span>
+              <span className="text-sm text-[var(--color-text-primary)]">{reporter?.name}</span>
             </div>
           </Card>
 
           {/* Project */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Project</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Project</label>
             <div className="mt-2 flex items-center gap-2">
               <span
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: project?.color }}
               />
-              <span className="text-sm text-[#0F172A]">{project?.name}</span>
+              <span className="text-sm text-[var(--color-text-primary)]">{project?.name}</span>
             </div>
           </Card>
 
           {/* Labels */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Labels</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Labels</label>
             <div className="mt-2 flex flex-wrap gap-1">
               {ticket.labels.map((label) => (
                 <LabelBadge
@@ -377,10 +377,10 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Due Date */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Due Date</label>
-            <div className={`mt-2 flex items-center gap-2 ${isOverdue ? 'text-[#EF4444]' : 'text-[#0F172A]'}`}>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Due Date</label>
+            <div className={`mt-2 flex items-center gap-2 ${isOverdue ? 'text-[#EF4444]' : 'text-[var(--color-text-primary)]'}`}>
               {isOverdue && <AlertCircle size={14} />}
-              <Calendar size={14} className="text-[#64748B]" />
+              <Calendar size={14} className="text-[var(--color-text-muted)]" />
               <span className="text-sm">{ticket.dueDate ? formatDate(ticket.dueDate) : 'No due date'}</span>
             </div>
             {isOverdue && (
@@ -391,7 +391,7 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
           {/* AI Predicted ETA */}
           {ticket.aiPredictedEta && (
             <Card padding="sm">
-              <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">AI Predicted ETA</label>
+              <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">AI Predicted ETA</label>
               <div className="mt-2 flex items-center gap-2 text-[#8B5CF6]">
                 <Sparkles size={14} />
                 <span className="text-sm font-medium">{ticket.aiPredictedEta}</span>
@@ -402,7 +402,7 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
           {/* SLA */}
           {ticket.slaStatus && (
             <Card padding="sm">
-              <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">SLA Status</label>
+              <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">SLA Status</label>
               <div className={`mt-2 flex items-center gap-2 ${
                 ticket.slaStatus === 'on-track' ? 'text-[#10B981]' :
                 ticket.slaStatus === 'at-risk' ? 'text-[#F59E0B]' : 'text-[#EF4444]'
@@ -417,18 +417,18 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Time Tracking */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Time Tracking</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Time Tracking</label>
             <div className="mt-2 space-y-2">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-[#64748B]">Estimated:</span>
-                <span className="text-[#0F172A]">8h</span>
+                <span className="text-[var(--color-text-muted)]">Estimated:</span>
+                <span className="text-[var(--color-text-primary)]">8h</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-[#64748B]">Logged:</span>
-                <span className="text-[#0F172A]">5h 30m</span>
+                <span className="text-[var(--color-text-muted)]">Logged:</span>
+                <span className="text-[var(--color-text-primary)]">5h 30m</span>
               </div>
-              <div className="h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
-                <div className="h-full bg-[#4F46E5] rounded-full" style={{ width: '68%' }} />
+              <div className="h-2 bg-[var(--color-bg-tertiary)] rounded-full overflow-hidden">
+                <div className="h-full bg-[var(--color-brand-primary)] rounded-full" style={{ width: '68%' }} />
               </div>
               <Button variant="secondary" size="sm" className="w-full">
                 <Timer size={14} />
@@ -439,20 +439,20 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
 
           {/* Watchers */}
           <Card padding="sm">
-            <label className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Watchers</label>
+            <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Watchers</label>
             <div className="mt-2 flex items-center gap-2">
               <div className="flex -space-x-2">
                 {mockUsers.slice(0, 3).map((user) => (
-                  <Avatar key={user.id} src={user.avatar} name={user.name} size="xs" className="ring-2 ring-white" />
+                  <Avatar key={user.id} src={user.avatar} name={user.name} size="xs" className="ring-2 ring-[var(--color-ring)]" />
                 ))}
               </div>
-              <button className="text-xs text-[#4F46E5] hover:underline">+ Add</button>
+              <button className="text-xs text-[var(--color-brand-text)] hover:underline">+ Add</button>
             </div>
           </Card>
 
           {/* Meta */}
           <Card padding="sm">
-            <div className="space-y-2 text-xs text-[#64748B]">
+            <div className="space-y-2 text-xs text-[var(--color-text-muted)]">
               <div className="flex justify-between">
                 <span>Created:</span>
                 <span>{formatDate(ticket.createdAt)}</span>

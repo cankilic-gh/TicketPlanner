@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Avatar, CountBadge } from '@/components/ui';
 import { currentUser } from '@/data/mockData';
+import { useTheme } from '@/components/ThemeProvider';
 import {
   Search,
   Sparkles,
@@ -26,7 +27,7 @@ interface TopbarProps {
 
 export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalette }: TopbarProps) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const notifications = [
     {
@@ -64,7 +65,7 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
   return (
     <header
       className={cn(
-        'fixed top-0 right-0 h-14 bg-white border-b border-[#E2E8F0] flex items-center gap-4 px-6 z-30 transition-all duration-300',
+        'fixed top-0 right-0 h-14 bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] flex items-center gap-4 px-6 z-30 transition-all duration-300',
         sidebarCollapsed ? 'left-16' : 'left-64'
       )}
     >
@@ -72,13 +73,13 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
       <nav className="flex items-center gap-2 text-sm">
         {breadcrumbs.map((crumb, index) => (
           <div key={index} className="flex items-center gap-2">
-            {index > 0 && <ChevronRight size={14} className="text-[#94A3B8]" />}
+            {index > 0 && <ChevronRight size={14} className="text-[var(--color-text-tertiary)]" />}
             {crumb.href ? (
-              <a href={crumb.href} className="text-[#475569] hover:text-[#0F172A]">
+              <a href={crumb.href} className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]">
                 {crumb.label}
               </a>
             ) : (
-              <span className="text-[#0F172A] font-medium">{crumb.label}</span>
+              <span className="text-[var(--color-text-primary)] font-medium">{crumb.label}</span>
             )}
           </div>
         ))}
@@ -90,14 +91,14 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
           onClick={onOpenCommandPalette}
           className="w-full relative"
         >
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8]" />
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)]" />
           <div
-            className="w-full h-9 pl-10 pr-4 rounded-lg bg-[#F1F5F9] border border-transparent text-sm text-[#94A3B8] flex items-center cursor-pointer hover:bg-[#E2E8F0] transition-colors"
+            className="w-full h-9 pl-10 pr-4 rounded-lg bg-[var(--color-bg-tertiary)] border border-transparent text-sm text-[var(--color-text-tertiary)] flex items-center cursor-pointer hover:bg-[var(--color-border)] transition-colors"
           >
             Search tickets, projects, people... (⌘K)
           </div>
           <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
-            <Sparkles size={14} className="text-[#94A3B8]" />
+            <Sparkles size={14} className="text-[var(--color-text-tertiary)]" />
           </div>
         </button>
       </div>
@@ -105,7 +106,7 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
       {/* Right Actions */}
       <div className="flex items-center gap-2">
         {/* AI Assistant */}
-        <button className="p-2 rounded-lg hover:bg-[#F1F5F9] text-[#475569] transition-colors" title="AI Assistant">
+        <button className="p-2 rounded-lg hover:bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] transition-colors" title="AI Assistant">
           <Sparkles size={20} />
         </button>
 
@@ -113,7 +114,7 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
         <div className="relative">
           <button
             onClick={() => setNotificationsOpen(!notificationsOpen)}
-            className="relative p-2 rounded-lg hover:bg-[#F1F5F9] text-[#475569] transition-colors"
+            className="relative p-2 rounded-lg hover:bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] transition-colors"
           >
             <Bell size={20} />
             {unreadCount > 0 && (
@@ -125,34 +126,34 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
 
           {/* Notifications Dropdown */}
           {notificationsOpen && (
-            <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-xl border border-[#E2E8F0] shadow-lg z-50">
-              <div className="flex items-center justify-between px-4 py-3 border-b border-[#E2E8F0]">
-                <h3 className="font-semibold text-[#0F172A]">Notifications</h3>
-                <button className="text-xs text-[#4F46E5] hover:underline">Mark All as Read</button>
+            <div className="absolute right-0 top-full mt-2 w-80 bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] shadow-lg z-50">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--color-border)]">
+                <h3 className="font-semibold text-[var(--color-text-primary)]">Notifications</h3>
+                <button className="text-xs text-[var(--color-brand-text)] hover:underline">Mark All as Read</button>
               </div>
               <div className="max-h-80 overflow-y-auto">
                 {notifications.map((notification) => (
                   <div
                     key={notification.id}
                     className={cn(
-                      'px-4 py-3 hover:bg-[#F8FAFC] cursor-pointer transition-colors',
-                      !notification.read && 'bg-[#EEF2FF]'
+                      'px-4 py-3 hover:bg-[var(--color-bg-secondary)] cursor-pointer transition-colors',
+                      !notification.read && 'bg-[var(--color-brand-light)]'
                     )}
                   >
                     <div className="flex items-start gap-3">
                       {!notification.read && (
-                        <span className="w-2 h-2 bg-[#4F46E5] rounded-full mt-1.5 flex-shrink-0" />
+                        <span className="w-2 h-2 bg-[var(--color-brand-primary)] rounded-full mt-1.5 flex-shrink-0" />
                       )}
                       <div className={cn(!notification.read ? '' : 'ml-5')}>
-                        <p className="text-sm text-[#0F172A]">{notification.message}</p>
-                        <p className="text-xs text-[#94A3B8] mt-1">{notification.time}</p>
+                        <p className="text-sm text-[var(--color-text-primary)]">{notification.message}</p>
+                        <p className="text-xs text-[var(--color-text-tertiary)] mt-1">{notification.time}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="px-4 py-3 border-t border-[#E2E8F0]">
-                <button className="text-sm text-[#4F46E5] hover:underline w-full text-center">
+              <div className="px-4 py-3 border-t border-[var(--color-border)]">
+                <button className="text-sm text-[var(--color-brand-text)] hover:underline w-full text-center">
                   View All Notifications
                 </button>
               </div>
@@ -162,10 +163,10 @@ export function Topbar({ breadcrumbs = [], sidebarCollapsed, onOpenCommandPalett
 
         {/* Theme Toggle */}
         <button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          className="p-2 rounded-lg hover:bg-[#F1F5F9] text-[#475569] transition-colors"
+          onClick={toggleTheme}
+          className="p-2 rounded-lg hover:bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] transition-colors"
         >
-          {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
         {/* User Avatar */}

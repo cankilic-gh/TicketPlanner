@@ -33,23 +33,23 @@ const insights = [
 
 export function AIInsights({ className }: AIInsightsProps) {
   return (
-    <div className={cn('bg-white rounded-xl border border-[#E2E8F0] overflow-hidden', className)}>
-      <div className="flex items-center gap-2 px-5 py-4 border-b border-[#E2E8F0]">
+    <div className={cn('bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] overflow-hidden', className)}>
+      <div className="flex items-center gap-2 px-5 py-4 border-b border-[var(--color-border)]">
         <Sparkles size={16} className="text-[#8B5CF6]" />
-        <h3 className="font-semibold text-[#0F172A]">AI Insights</h3>
+        <h3 className="font-semibold text-[var(--color-text-primary)]">AI Insights</h3>
       </div>
 
-      <div className="divide-y divide-[#E2E8F0]">
+      <div className="divide-y divide-[var(--color-border)]">
         {insights.map((insight) => (
           <div
             key={insight.id}
-            className="px-5 py-3 hover:bg-[#F8FAFC] transition-colors cursor-pointer"
+            className="px-5 py-3 hover:bg-[var(--color-bg-secondary)] transition-colors cursor-pointer"
           >
             <div className="flex items-start gap-3">
-              <span className="p-1.5 rounded-lg bg-[#F1F5F9] mt-0.5">
+              <span className="p-1.5 rounded-lg bg-[var(--color-bg-tertiary)] mt-0.5">
                 {insight.icon}
               </span>
-              <p className="text-sm text-[#475569] leading-relaxed">
+              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
                 {insight.message}
               </p>
             </div>
@@ -57,8 +57,8 @@ export function AIInsights({ className }: AIInsightsProps) {
         ))}
       </div>
 
-      <div className="px-5 py-3 border-t border-[#E2E8F0]">
-        <Link href="/ai-insights" className="text-sm text-[#4F46E5] hover:underline">
+      <div className="px-5 py-3 border-t border-[var(--color-border)]">
+        <Link href="/ai-insights" className="text-sm text-[var(--color-brand-text)] hover:underline">
           View All AI Insights →
         </Link>
       </div>

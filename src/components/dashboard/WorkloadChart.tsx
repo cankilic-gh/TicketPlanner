@@ -27,9 +27,9 @@ export function WorkloadChart({ className }: WorkloadChartProps) {
   const maxTickets = Math.max(...developers.map((d) => d.openTickets));
 
   return (
-    <div className={cn('bg-white rounded-xl border border-[#E2E8F0] overflow-hidden', className)}>
-      <div className="px-5 py-4 border-b border-[#E2E8F0]">
-        <h3 className="font-semibold text-[#0F172A]">Workload Distribution</h3>
+    <div className={cn('bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] overflow-hidden', className)}>
+      <div className="px-5 py-4 border-b border-[var(--color-border)]">
+        <h3 className="font-semibold text-[var(--color-text-primary)]">Workload Distribution</h3>
       </div>
 
       <div className="p-5 space-y-4">
@@ -47,12 +47,12 @@ export function WorkloadChart({ className }: WorkloadChartProps) {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-[#0F172A] truncate">{user.name}</span>
+                  <span className="text-sm font-medium text-[var(--color-text-primary)] truncate">{user.name}</span>
                   <span className="text-xs font-medium" style={{ color }}>
                     {user.openTickets} tickets
                   </span>
                 </div>
-                <div className="h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
+                <div className="h-2 bg-[var(--color-bg-tertiary)] rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{
@@ -68,14 +68,14 @@ export function WorkloadChart({ className }: WorkloadChartProps) {
       </div>
 
       {/* Legend */}
-      <div className="px-5 py-3 border-t border-[#E2E8F0] flex items-center gap-4">
+      <div className="px-5 py-3 border-t border-[var(--color-border)] flex items-center gap-4">
         {(Object.keys(workloadColors) as WorkloadLevel[]).map((level) => (
           <div key={level} className="flex items-center gap-1.5">
             <span
               className="w-2 h-2 rounded-full"
               style={{ backgroundColor: workloadColors[level] }}
             />
-            <span className="text-xs text-[#64748B]">{workloadLabels[level]}</span>
+            <span className="text-xs text-[var(--color-text-muted)]">{workloadLabels[level]}</span>
           </div>
         ))}
       </div>

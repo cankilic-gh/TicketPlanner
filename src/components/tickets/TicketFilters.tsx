@@ -57,7 +57,7 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
     <div className={cn('space-y-4', className)}>
       {/* View Tabs */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1 p-1 bg-[#F1F5F9] rounded-lg">
+        <div className="flex items-center gap-1 p-1 bg-[var(--color-bg-tertiary)] rounded-lg">
           {views.map((view) => (
             <button
               key={view.id}
@@ -65,8 +65,8 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
               className={cn(
                 'flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors',
                 activeView === view.id
-                  ? 'bg-white text-[#0F172A] shadow-sm'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] shadow-sm'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
               )}
             >
               {view.icon}
@@ -76,14 +76,14 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
         </div>
 
         {/* Density Toggle */}
-        <div className="flex items-center gap-1 p-1 bg-[#F1F5F9] rounded-lg">
-          <button className="p-1.5 rounded-md text-[#64748B] hover:text-[#0F172A]" title="Compact">
+        <div className="flex items-center gap-1 p-1 bg-[var(--color-bg-tertiary)] rounded-lg">
+          <button className="p-1.5 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]" title="Compact">
             <Rows4 size={16} />
           </button>
-          <button className="p-1.5 rounded-md bg-white text-[#0F172A] shadow-sm" title="Standard">
+          <button className="p-1.5 rounded-md bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] shadow-sm" title="Standard">
             <Rows3 size={16} />
           </button>
-          <button className="p-1.5 rounded-md text-[#64748B] hover:text-[#0F172A]" title="Comfortable">
+          <button className="p-1.5 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]" title="Comfortable">
             <Rows2 size={16} />
           </button>
         </div>
@@ -93,11 +93,11 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
       <div className="space-y-3">
         {/* Search */}
         <div className="relative">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8]" />
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)]" />
           <input
             type="text"
             placeholder="Search or ask: 'critical bugs in Kansas Courts'..."
-            className="w-full h-10 pl-10 pr-12 rounded-lg bg-white border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5] transition-colors"
+            className="w-full h-10 pl-10 pr-12 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-sm text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] focus:outline-none focus:border-[var(--color-brand-primary)] focus:ring-1 focus:ring-[var(--color-brand-primary)] transition-colors"
           />
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <Sparkles size={16} className="text-[#8B5CF6]" />
@@ -113,16 +113,16 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
               className={cn(
                 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors',
                 activeFilters.includes(filter.id)
-                  ? 'bg-[#4F46E5] text-white'
-                  : 'bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0]'
+                  ? 'bg-[var(--color-brand-primary)] text-white'
+                  : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-border)]'
               )}
             >
               {filter.label}
               <span className={cn(
                 'px-1.5 py-0.5 rounded-full text-[10px]',
                 activeFilters.includes(filter.id)
-                  ? 'bg-white/20'
-                  : 'bg-[#E2E8F0]'
+                  ? 'bg-[var(--color-bg-primary)]/20'
+                  : 'bg-[var(--color-border)]'
               )}>
                 {filter.count}
               </span>
@@ -146,10 +146,10 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
 
           {activeFilters.length > 0 && (
             <>
-              <div className="h-4 w-px bg-[#E2E8F0]" />
+              <div className="h-4 w-px bg-[var(--color-border)]" />
               <button
                 onClick={() => setActiveFilters([])}
-                className="text-xs text-[#64748B] hover:text-[#0F172A] flex items-center gap-1"
+                className="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] flex items-center gap-1"
               >
                 <X size={12} />
                 Clear All
@@ -164,19 +164,19 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
             <span>Save View</span>
           </Button>
 
-          <div className="h-4 w-px bg-[#E2E8F0]" />
+          <div className="h-4 w-px bg-[var(--color-border)]" />
 
           <div className="flex items-center gap-1">
-            <span className="text-xs text-[#64748B]">Group by:</span>
-            <button className="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium text-[#475569] hover:bg-[#F1F5F9]">
+            <span className="text-xs text-[var(--color-text-muted)]">Group by:</span>
+            <button className="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]">
               None
               <ChevronDown size={12} />
             </button>
           </div>
 
           <div className="flex items-center gap-1">
-            <span className="text-xs text-[#64748B]">Sort by:</span>
-            <button className="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium text-[#475569] hover:bg-[#F1F5F9]">
+            <span className="text-xs text-[var(--color-text-muted)]">Sort by:</span>
+            <button className="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)]">
               Updated
               <ChevronDown size={12} />
             </button>
@@ -186,9 +186,9 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
 
       {/* Advanced Filter Panel */}
       {showAdvanced && (
-        <div className="p-4 bg-[#F8FAFC] rounded-lg border border-[#E2E8F0]">
+        <div className="p-4 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)]">
           <div className="flex items-center gap-2">
-            <select className="h-8 px-3 rounded-md border border-[#E2E8F0] bg-white text-sm text-[#475569] focus:outline-none focus:border-[#4F46E5]">
+            <select className="h-8 px-3 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-primary)] text-sm text-[var(--color-text-secondary)] focus:outline-none focus:border-[var(--color-brand-primary)]">
               <option>Status</option>
               <option>Priority</option>
               <option>Assignee</option>
@@ -199,14 +199,14 @@ export function TicketFilters({ className, activeView = 'list', onViewChange }: 
               <option>Created</option>
             </select>
 
-            <select className="h-8 px-3 rounded-md border border-[#E2E8F0] bg-white text-sm text-[#475569] focus:outline-none focus:border-[#4F46E5]">
+            <select className="h-8 px-3 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-primary)] text-sm text-[var(--color-text-secondary)] focus:outline-none focus:border-[var(--color-brand-primary)]">
               <option>is</option>
               <option>is not</option>
               <option>is any of</option>
               <option>is none of</option>
             </select>
 
-            <select className="h-8 px-3 rounded-md border border-[#E2E8F0] bg-white text-sm text-[#475569] focus:outline-none focus:border-[#4F46E5] flex-1">
+            <select className="h-8 px-3 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-primary)] text-sm text-[var(--color-text-secondary)] focus:outline-none focus:border-[var(--color-brand-primary)] flex-1">
               <option>Select value...</option>
               <option>New</option>
               <option>In Dev</option>

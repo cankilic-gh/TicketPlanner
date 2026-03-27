@@ -59,14 +59,14 @@ export function Avatar({
           src={src}
           alt={name}
           className={cn(
-            'rounded-full object-cover bg-[#F1F5F9]',
+            'rounded-full object-cover bg-[var(--color-bg-tertiary)]',
             sizeClasses[size]
           )}
         />
       ) : (
         <div
           className={cn(
-            'rounded-full flex items-center justify-center bg-[#4F46E5] text-white font-medium',
+            'rounded-full flex items-center justify-center bg-[var(--color-brand-primary)] text-white font-medium',
             sizeClasses[size]
           )}
         >
@@ -77,7 +77,7 @@ export function Avatar({
       {showOnline && (
         <span
           className={cn(
-            'absolute rounded-full border-2 border-white',
+            'absolute rounded-full border-2 border-[var(--color-ring)]',
             onlineDotSizes[size],
             isOnline ? 'bg-[#10B981] animate-presence' : 'bg-[#9CA3AF]'
           )}
@@ -116,13 +116,13 @@ export function AvatarGroup({ users, max = 3, size = 'sm', className }: AvatarGr
           src={user.avatar}
           name={user.name}
           size={size}
-          className="ring-2 ring-white"
+          className="ring-2 ring-[var(--color-ring)]"
         />
       ))}
       {remainingCount > 0 && (
         <div
           className={cn(
-            'rounded-full flex items-center justify-center bg-[#E2E8F0] text-[#475569] font-medium ring-2 ring-white',
+            'rounded-full flex items-center justify-center bg-[var(--color-badge-default-bg)] text-[var(--color-badge-default-text)] font-medium ring-2 ring-[var(--color-ring)]',
             sizeClasses[size]
           )}
         >

@@ -14,9 +14,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
     const variants = {
-      primary: 'bg-[#4F46E5] text-white hover:bg-[#4338CA] focus-visible:ring-[#4F46E5]',
-      secondary: 'bg-white text-[#0F172A] border border-[#E2E8F0] hover:bg-[#F8FAFC] focus-visible:ring-[#4F46E5]',
-      ghost: 'bg-transparent text-[#475569] hover:bg-[#F1F5F9] focus-visible:ring-[#4F46E5]',
+      primary: 'bg-[var(--color-brand-primary)] text-white hover:bg-[var(--color-brand-hover)] focus-visible:ring-[var(--color-brand-primary)]',
+      secondary: 'bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] focus-visible:ring-[var(--color-brand-primary)]',
+      ghost: 'bg-transparent text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] focus-visible:ring-[var(--color-brand-primary)]',
       danger: 'bg-[#EF4444] text-white hover:bg-[#DC2626] focus-visible:ring-[#EF4444]',
     };
 

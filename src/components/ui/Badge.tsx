@@ -96,10 +96,10 @@ interface CountBadgeProps {
 
 export function CountBadge({ count, variant = 'default', className }: CountBadgeProps) {
   const variants = {
-    default: 'bg-[#E2E8F0] text-[#475569]',
-    danger: 'bg-[#FEE2E2] text-[#DC2626]',
-    warning: 'bg-[#FEF3C7] text-[#D97706]',
-    success: 'bg-[#D1FAE5] text-[#059669]',
+    default: 'bg-[var(--color-badge-default-bg)] text-[var(--color-badge-default-text)]',
+    danger: 'bg-[var(--color-badge-danger-bg)] text-[var(--color-badge-danger-text)]',
+    warning: 'bg-[var(--color-badge-warning-bg)] text-[var(--color-badge-warning-text)]',
+    success: 'bg-[var(--color-badge-success-bg)] text-[var(--color-badge-success-text)]',
   };
 
   if (count === 0) return null;

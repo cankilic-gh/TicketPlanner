@@ -16,7 +16,7 @@ export function AppLayout({ children, breadcrumbs = [] }: AppLayoutProps) {
   const commandPalette = useCommandPalette();
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[var(--color-bg-secondary)]">
       <Sidebar
         isCollapsed={sidebarCollapsed}
         onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}

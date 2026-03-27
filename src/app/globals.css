@@ -7,9 +7,9 @@
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-/* CSS Custom Properties */
+/* CSS Custom Properties - Light Mode Default */
 :root {
-  /* Background Colors - Light Mode */
+  /* Background Colors */
   --color-bg-primary: #FFFFFF;
   --color-bg-secondary: #F8FAFC;
   --color-bg-tertiary: #F1F5F9;
@@ -18,15 +18,36 @@
   --color-text-primary: #0F172A;
   --color-text-secondary: #475569;
   --color-text-tertiary: #94A3B8;
+  --color-text-muted: #64748B;
 
   /* Brand Colors */
   --color-brand-primary: #4F46E5;
   --color-brand-hover: #4338CA;
   --color-brand-light: #EEF2FF;
+  --color-brand-text: #4F46E5;
 
   /* Borders */
   --color-border: #E2E8F0;
   --color-border-hover: #CBD5E1;
+
+  /* Ring (avatar borders, etc.) */
+  --color-ring: #FFFFFF;
+
+  /* Badge Colors */
+  --color-badge-default-bg: #E2E8F0;
+  --color-badge-default-text: #475569;
+  --color-badge-danger-bg: #FEE2E2;
+  --color-badge-danger-text: #DC2626;
+  --color-badge-warning-bg: #FEF3C7;
+  --color-badge-warning-text: #D97706;
+  --color-badge-success-bg: #D1FAE5;
+  --color-badge-success-text: #059669;
+
+  /* Semantic Backgrounds */
+  --color-bg-warning: #FFF7ED;
+  --color-bg-danger: #FEE2E2;
+  --color-bg-danger-subtle: #FEF2F2;
+  --color-bg-success: #D1FAE5;
 
   /* Status Colors */
   --color-status-new: #3B82F6;
@@ -53,7 +74,7 @@
   --radius-lg: 16px;
   --radius-full: 9999px;
 
-  /* Shadows - Light Mode */
+  /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
@@ -63,6 +84,9 @@
   --sidebar-collapsed: 64px;
   --topbar-height: 56px;
   --content-max-width: 1440px;
+
+  /* Stroke for charts */
+  --color-stroke-bg: #E2E8F0;
 }
 
 /* Dark Mode Variables */
@@ -70,14 +94,44 @@
   --color-bg-primary: #0F172A;
   --color-bg-secondary: #1E293B;
   --color-bg-tertiary: #334155;
+
   --color-text-primary: #F1F5F9;
   --color-text-secondary: #94A3B8;
   --color-text-tertiary: #64748B;
+  --color-text-muted: #94A3B8;
+
+  --color-brand-primary: #6366F1;
+  --color-brand-hover: #818CF8;
+  --color-brand-light: #312E81;
+  --color-brand-text: #818CF8;
+
   --color-border: #334155;
   --color-border-hover: #475569;
+
+  --color-ring: #0F172A;
+
+  --color-badge-default-bg: #334155;
+  --color-badge-default-text: #94A3B8;
+  --color-badge-danger-bg: #450a0a;
+  --color-badge-danger-text: #FCA5A5;
+  --color-badge-warning-bg: #451a03;
+  --color-badge-warning-text: #FCD34D;
+  --color-badge-success-bg: #064E3B;
+  --color-badge-success-text: #6EE7B7;
+
+  --color-bg-warning: #451a03;
+  --color-bg-danger: #450a0a;
+  --color-bg-danger-subtle: #450a0a;
+  --color-bg-success: #064E3B;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.25);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+
+  --color-stroke-bg: #334155;
 }
 
-/* Base Layer - use Tailwind's @layer for proper cascade */
+/* Base Layer */
 @layer base {
   * {
     box-sizing: border-box;
@@ -91,15 +145,16 @@
   body {
     font-family: var(--font-sans);
     min-height: 100vh;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    transition: background-color 0.2s, color 0.2s;
   }
 
-  /* Focus States */
   :focus-visible {
     outline: 2px solid var(--color-brand-primary);
     outline-offset: 2px;
   }
 
-  /* Scrollbar Styles */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -121,12 +176,8 @@
 
 /* Custom Animations */
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes pulse-glow {
@@ -141,35 +192,18 @@
 }
 
 @keyframes presence-pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
 }
 
 @layer utilities {
-  .animate-shimmer {
-    animation: shimmer 2s infinite;
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  .animate-presence {
-    animation: presence-pulse 2s ease-in-out infinite;
-  }
+  .animate-shimmer { animation: shimmer 2s infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+  .animate-presence { animation: presence-pulse 2s ease-in-out infinite; }
 }
 
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

@@ -30,17 +30,17 @@ const activityIcons = {
 
 export function ActivityFeed({ className }: ActivityFeedProps) {
   return (
-    <div className={cn('bg-white rounded-xl border border-[#E2E8F0] overflow-hidden', className)}>
-      <div className="px-5 py-4 border-b border-[#E2E8F0]">
-        <h3 className="font-semibold text-[#0F172A]">Team Activity</h3>
+    <div className={cn('bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] overflow-hidden', className)}>
+      <div className="px-5 py-4 border-b border-[var(--color-border)]">
+        <h3 className="font-semibold text-[var(--color-text-primary)]">Team Activity</h3>
       </div>
 
-      <div className="divide-y divide-[#E2E8F0] max-h-[400px] overflow-y-auto">
+      <div className="divide-y divide-[var(--color-border)] max-h-[400px] overflow-y-auto">
         {mockActivities.map((activity) => (
           <Link
             key={activity.id}
             href={`/tickets/${activity.ticketId}`}
-            className="flex items-start gap-3 px-5 py-3 hover:bg-[#F8FAFC] transition-colors"
+            className="flex items-start gap-3 px-5 py-3 hover:bg-[var(--color-bg-secondary)] transition-colors"
           >
             <Avatar
               src={activity.userAvatar}
@@ -50,15 +50,15 @@ export function ActivityFeed({ className }: ActivityFeedProps) {
             />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <span className="p-1 rounded bg-[#F1F5F9]">
+                <span className="p-1 rounded bg-[var(--color-bg-tertiary)]">
                   {activityIcons[activity.type]}
                 </span>
-                <p className="text-sm text-[#0F172A]">
+                <p className="text-sm text-[var(--color-text-primary)]">
                   <span className="font-medium">{activity.userName}</span>
                   {' '}{activity.description}
                 </p>
               </div>
-              <p className="text-xs text-[#94A3B8] mt-1">
+              <p className="text-xs text-[var(--color-text-tertiary)] mt-1">
                 {formatRelativeTime(activity.timestamp)}
               </p>
             </div>
@@ -66,8 +66,8 @@ export function ActivityFeed({ className }: ActivityFeedProps) {
         ))}
       </div>
 
-      <div className="px-5 py-3 border-t border-[#E2E8F0]">
-        <Link href="/activity" className="text-sm text-[#4F46E5] hover:underline">
+      <div className="px-5 py-3 border-t border-[var(--color-border)]">
+        <Link href="/activity" className="text-sm text-[var(--color-brand-text)] hover:underline">
           View All Activity →
         </Link>
       </div>

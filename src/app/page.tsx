@@ -21,10 +21,10 @@ export default function DashboardPage() {
     <AppLayout breadcrumbs={[{ label: 'Dashboard' }]}>
       {/* Welcome Section */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-[#0F172A]">
+        <h1 className="text-2xl font-semibold text-[var(--color-text-primary)]">
           {greeting}, {currentUser.name.split(' ')[0]}
         </h1>
-        <p className="text-[#64748B] mt-1">{today}</p>
+        <p className="text-[var(--color-text-muted)] mt-1">{today}</p>
       </div>
 
       {/* Stats Row */}
@@ -32,27 +32,27 @@ export default function DashboardPage() {
         <StatCard
           label="My Open Tickets"
           value={mockDashboardStats.myOpenTickets}
-          icon={<Ticket size={20} className="text-[#64748B]" />}
+          icon={<Ticket size={20} className="text-[var(--color-text-muted)]" />}
         />
         <StatCard
           label="In Progress"
           value={mockDashboardStats.inProgress}
-          icon={<Loader2 size={20} className="text-[#64748B]" />}
+          icon={<Loader2 size={20} className="text-[var(--color-text-muted)]" />}
         />
         <StatCard
           label="Awaiting QA"
           value={mockDashboardStats.awaitingQA}
-          icon={<Clock size={20} className="text-[#64748B]" />}
+          icon={<Clock size={20} className="text-[var(--color-text-muted)]" />}
         />
         <StatCard
           label="Overdue"
           value={mockDashboardStats.overdue}
-          icon={<AlertTriangle size={20} className="text-[#64748B]" />}
+          icon={<AlertTriangle size={20} className="text-[var(--color-text-muted)]" />}
         />
         <StatCard
           label="Resolved This Week"
           value={mockDashboardStats.resolvedThisWeek}
-          icon={<CheckCircle2 size={20} className="text-[#64748B]" />}
+          icon={<CheckCircle2 size={20} className="text-[var(--color-text-muted)]" />}
         />
       </div>
 

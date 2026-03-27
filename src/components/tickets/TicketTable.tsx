@@ -70,33 +70,33 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
   };
 
   return (
-    <div className={cn('bg-white rounded-xl border border-[#E2E8F0] overflow-hidden', className)}>
+    <div className={cn('bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)] overflow-hidden', className)}>
       <div className="overflow-x-auto">
         <table className="w-full min-w-[1100px]">
           <thead>
-            <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0]">
+            <tr className="bg-[var(--color-bg-secondary)] border-b border-[var(--color-border)]">
               <th className="w-12 px-4 py-3">
                 <input
                   type="checkbox"
                   checked={selectedTickets.length === tickets.length && tickets.length > 0}
                   onChange={toggleSelectAll}
-                  className="w-4 h-4 rounded border-[#E2E8F0] text-[#4F46E5] focus:ring-[#4F46E5]"
+                  className="w-4 h-4 rounded border-[var(--color-border)] text-[var(--color-brand-text)] focus:ring-[var(--color-brand-primary)]"
                 />
               </th>
-              <th className="w-12 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Pri</th>
-              <th className="w-16 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">ID</th>
+              <th className="w-12 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Pri</th>
+              <th className="w-16 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">ID</th>
               <th className="w-10 px-2 py-3"></th>
-              <th className="min-w-[300px] px-4 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Title</th>
-              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Status</th>
-              <th className="w-36 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Assignee</th>
-              <th className="w-20 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Project</th>
-              <th className="w-32 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Labels</th>
-              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Due Date</th>
-              <th className="w-24 px-3 py-3 text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider">Updated</th>
+              <th className="min-w-[300px] px-4 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Title</th>
+              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Status</th>
+              <th className="w-36 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Assignee</th>
+              <th className="w-20 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Project</th>
+              <th className="w-32 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Labels</th>
+              <th className="w-28 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Due Date</th>
+              <th className="w-24 px-3 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Updated</th>
               <th className="w-10 px-2 py-3"></th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E2E8F0]">
+          <tbody className="divide-y divide-[var(--color-border)]">
             {tickets.map((ticket) => {
               const project = getProject(ticket.projectId);
               const assignees = ticket.assigneeIds.map((id) => getUser(id)).filter(Boolean);
@@ -106,8 +106,8 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                 <tr
                   key={ticket.id}
                   className={cn(
-                    'hover:bg-[#F8FAFC] transition-colors group',
-                    selectedTickets.includes(ticket.id) && 'bg-[#EEF2FF]'
+                    'hover:bg-[var(--color-bg-secondary)] transition-colors group',
+                    selectedTickets.includes(ticket.id) && 'bg-[var(--color-brand-light)]'
                   )}
                 >
                   {/* Checkbox */}
@@ -116,7 +116,7 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                       type="checkbox"
                       checked={selectedTickets.includes(ticket.id)}
                       onChange={() => toggleSelect(ticket.id)}
-                      className="w-4 h-4 rounded border-[#E2E8F0] text-[#4F46E5] focus:ring-[#4F46E5]"
+                      className="w-4 h-4 rounded border-[var(--color-border)] text-[var(--color-brand-text)] focus:ring-[var(--color-brand-primary)]"
                     />
                   </td>
 
@@ -130,12 +130,12 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                     <div className="flex items-center gap-1 group/id">
                       <Link
                         href={`/tickets/${ticket.id}`}
-                        className="font-mono text-xs text-[#64748B] hover:text-[#4F46E5]"
+                        className="font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-brand-text)]"
                       >
                         {getIdNumber(ticket.id)}
                       </Link>
-                      <button className="opacity-0 group-hover/id:opacity-100 p-0.5 hover:bg-[#F1F5F9] rounded transition-opacity">
-                        <Copy size={12} className="text-[#94A3B8]" />
+                      <button className="opacity-0 group-hover/id:opacity-100 p-0.5 hover:bg-[var(--color-bg-tertiary)] rounded transition-opacity">
+                        <Copy size={12} className="text-[var(--color-text-tertiary)]" />
                       </button>
                     </div>
                   </td>
@@ -148,7 +148,7 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                   {/* Title */}
                   <td className="px-4 py-3">
                     <Link href={`/tickets/${ticket.id}`} className="block">
-                      <p className="text-sm text-[#0F172A] hover:text-[#4F46E5] transition-colors truncate">
+                      <p className="text-sm text-[var(--color-text-primary)] hover:text-[var(--color-brand-text)] transition-colors truncate">
                         {ticket.title}
                       </p>
                     </Link>
@@ -166,7 +166,7 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                         {assignees.slice(0, 3).map((u) => (
                           <div
                             key={u!.id}
-                            className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium text-white ring-2 ring-white"
+                            className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium text-white ring-2 ring-[var(--color-ring)]"
                             style={{ backgroundColor: getAvatarColor(u!.name) }}
                             title={u!.name}
                           >
@@ -174,13 +174,13 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                           </div>
                         ))}
                         {assignees.length > 3 && (
-                          <span className="text-xs text-[#64748B] ml-2">
+                          <span className="text-xs text-[var(--color-text-muted)] ml-2">
                             +{assignees.length - 3}
                           </span>
                         )}
                       </div>
                     ) : (
-                      <span className="text-xs text-[#94A3B8]">—</span>
+                      <span className="text-xs text-[var(--color-text-tertiary)]">—</span>
                     )}
                   </td>
 
@@ -211,7 +211,7 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                         />
                       ))}
                       {ticket.labels.length > 2 && (
-                        <span className="text-xs text-[#64748B]">+{ticket.labels.length - 2}</span>
+                        <span className="text-xs text-[var(--color-text-muted)]">+{ticket.labels.length - 2}</span>
                       )}
                     </div>
                   </td>
@@ -221,7 +221,7 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
                     {ticket.dueDate && (
                       <div className={cn(
                         'flex items-center gap-1 text-xs whitespace-nowrap',
-                        isOverdue(ticket.dueDate) ? 'text-[#EF4444]' : 'text-[#64748B]'
+                        isOverdue(ticket.dueDate) ? 'text-[#EF4444]' : 'text-[var(--color-text-muted)]'
                       )}>
                         {isOverdue(ticket.dueDate) && <AlertCircle size={12} />}
                         <Clock size={12} />
@@ -232,15 +232,15 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
 
                   {/* Updated */}
                   <td className="px-3 py-3">
-                    <span className="text-xs text-[#94A3B8] whitespace-nowrap">
+                    <span className="text-xs text-[var(--color-text-tertiary)] whitespace-nowrap">
                       {formatRelativeTime(ticket.updatedAt)}
                     </span>
                   </td>
 
                   {/* Actions */}
                   <td className="px-2 py-3">
-                    <button className="p-1 rounded hover:bg-[#F1F5F9] opacity-0 group-hover:opacity-100 transition-opacity">
-                      <MoreHorizontal size={16} className="text-[#64748B]" />
+                    <button className="p-1 rounded hover:bg-[var(--color-bg-tertiary)] opacity-0 group-hover:opacity-100 transition-opacity">
+                      <MoreHorizontal size={16} className="text-[var(--color-text-muted)]" />
                     </button>
                   </td>
                 </tr>
@@ -252,14 +252,14 @@ export function TicketTable({ tickets = mockTickets, className }: TicketTablePro
 
       {/* Bulk Actions Bar */}
       {selectedTickets.length > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-4 z-50">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] px-6 py-3 rounded-xl shadow-lg flex items-center gap-4 z-50">
           <span className="text-sm font-medium">{selectedTickets.length} selected</span>
-          <button className="text-xs text-[#94A3B8] hover:text-white">Clear</button>
+          <button className="text-xs text-[var(--color-text-tertiary)] hover:text-white">Clear</button>
           <div className="h-4 w-px bg-[#334155]" />
-          <button className="text-xs hover:text-[#4F46E5]">Status</button>
-          <button className="text-xs hover:text-[#4F46E5]">Priority</button>
-          <button className="text-xs hover:text-[#4F46E5]">Assign</button>
-          <button className="text-xs hover:text-[#4F46E5]">Labels</button>
+          <button className="text-xs hover:text-[var(--color-brand-text)]">Status</button>
+          <button className="text-xs hover:text-[var(--color-brand-text)]">Priority</button>
+          <button className="text-xs hover:text-[var(--color-brand-text)]">Assign</button>
+          <button className="text-xs hover:text-[var(--color-brand-text)]">Labels</button>
           <button className="text-xs text-[#EF4444] hover:text-[#FCA5A5]">Delete</button>
         </div>
       )}

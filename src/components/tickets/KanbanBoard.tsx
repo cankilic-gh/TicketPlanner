@@ -60,7 +60,7 @@ function KanbanCard({ ticket }: KanbanCardProps) {
   return (
     <Link
       href={`/tickets/${ticket.id}`}
-      className="block bg-white rounded-lg border border-[#E2E8F0] p-3 hover:shadow-md transition-shadow group"
+      className="block bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)] p-3 hover:shadow-md transition-shadow group"
     >
       {/* SLA Bar */}
       {ticket.slaStatus && (
@@ -78,19 +78,19 @@ function KanbanCard({ ticket }: KanbanCardProps) {
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <PriorityIndicator priority={ticket.priority} />
-          <span className="font-mono text-xs text-[#64748B]">{ticket.id}</span>
+          <span className="font-mono text-xs text-[var(--color-text-muted)]">{ticket.id}</span>
         </div>
         <span title={typeConfig.label}>{typeConfig.icon}</span>
       </div>
 
       {/* Title */}
-      <h4 className="text-sm font-medium text-[#0F172A] mb-1 line-clamp-2 group-hover:text-[#4F46E5] transition-colors">
+      <h4 className="text-sm font-medium text-[var(--color-text-primary)] mb-1 line-clamp-2 group-hover:text-[var(--color-brand-text)] transition-colors">
         {ticket.title}
       </h4>
 
       {/* AI Summary */}
       {ticket.aiSummary && (
-        <p className="text-xs text-[#94A3B8] mb-2 line-clamp-1">{ticket.aiSummary}</p>
+        <p className="text-xs text-[var(--color-text-tertiary)] mb-2 line-clamp-1">{ticket.aiSummary}</p>
       )}
 
       {/* Labels */}
@@ -104,13 +104,13 @@ function KanbanCard({ ticket }: KanbanCardProps) {
             />
           ))}
           {ticket.labels.length > 2 && (
-            <span className="text-xs text-[#64748B]">+{ticket.labels.length - 2}</span>
+            <span className="text-xs text-[var(--color-text-muted)]">+{ticket.labels.length - 2}</span>
           )}
         </div>
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-2 border-t border-[#F1F5F9]">
+      <div className="flex items-center justify-between pt-2 border-t border-[var(--color-border)]">
         {/* Left: Assignee */}
         <div className="flex items-center gap-2">
           {assignees.length > 0 ? (
@@ -136,7 +136,7 @@ function KanbanCard({ ticket }: KanbanCardProps) {
           {ticket.dueDate && (
             <div className={cn(
               'flex items-center gap-1 text-xs',
-              isOverdue ? 'text-[#EF4444]' : 'text-[#64748B]'
+              isOverdue ? 'text-[#EF4444]' : 'text-[var(--color-text-muted)]'
             )}>
               {isOverdue && <AlertCircle size={10} />}
               <Clock size={10} />
@@ -146,7 +146,7 @@ function KanbanCard({ ticket }: KanbanCardProps) {
 
           {/* Comments */}
           {commentCount > 0 && (
-            <div className="flex items-center gap-1 text-xs text-[#64748B]">
+            <div className="flex items-center gap-1 text-xs text-[var(--color-text-muted)]">
               <MessageSquare size={10} />
               <span>{commentCount}</span>
             </div>
@@ -154,7 +154,7 @@ function KanbanCard({ ticket }: KanbanCardProps) {
 
           {/* Attachments */}
           {attachmentCount > 0 && (
-            <div className="flex items-center gap-1 text-xs text-[#64748B]">
+            <div className="flex items-center gap-1 text-xs text-[var(--color-text-muted)]">
               <Paperclip size={10} />
               <span>{attachmentCount}</span>
             </div>
@@ -198,7 +198,7 @@ export function KanbanBoard({ tickets = mockTickets, className }: KanbanBoardPro
           <div
             key={column.id}
             className={cn(
-              'flex-shrink-0 w-[300px] bg-[#F8FAFC] rounded-xl',
+              'flex-shrink-0 w-[300px] bg-[var(--color-bg-secondary)] rounded-xl',
               isCollapsed && 'w-12'
             )}
           >
@@ -220,10 +220,10 @@ export function KanbanBoard({ tickets = mockTickets, className }: KanbanBoardPro
                 />
                 {!isCollapsed && (
                   <>
-                    <span className="text-sm font-semibold text-[#0F172A]">{config.label}</span>
+                    <span className="text-sm font-semibold text-[var(--color-text-primary)]">{config.label}</span>
                     <span className={cn(
                       'px-1.5 py-0.5 rounded text-xs font-medium',
-                      isOverWipLimit ? 'bg-[#FEE2E2] text-[#DC2626]' : 'bg-[#E2E8F0] text-[#64748B]'
+                      isOverWipLimit ? 'bg-[var(--color-badge-danger-bg)] text-[var(--color-badge-danger-text)]' : 'bg-[var(--color-border)] text-[var(--color-text-muted)]'
                     )}>
                       {columnTickets.length}
                       {column.wipLimit && `/${column.wipLimit}`}
@@ -234,10 +234,10 @@ export function KanbanBoard({ tickets = mockTickets, className }: KanbanBoardPro
 
               {!isCollapsed && (
                 <div className="flex items-center gap-1">
-                  <button className="p-1 rounded hover:bg-[#E2E8F0] text-[#64748B]">
+                  <button className="p-1 rounded hover:bg-[var(--color-border)] text-[var(--color-text-muted)]">
                     <Plus size={16} />
                   </button>
-                  <button className="p-1 rounded hover:bg-[#E2E8F0] text-[#64748B]">
+                  <button className="p-1 rounded hover:bg-[var(--color-border)] text-[var(--color-text-muted)]">
                     <MoreHorizontal size={16} />
                   </button>
                 </div>
@@ -254,7 +254,7 @@ export function KanbanBoard({ tickets = mockTickets, className }: KanbanBoardPro
                 ))}
 
                 {columnTickets.length === 0 && (
-                  <div className="text-center py-8 text-sm text-[#94A3B8]">
+                  <div className="text-center py-8 text-sm text-[var(--color-text-tertiary)]">
                     No tickets
                   </div>
                 )}

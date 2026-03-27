@@ -20,9 +20,9 @@ export function Card({ children, className, padding = 'md', hover = false }: Car
   return (
     <div
       className={cn(
-        'bg-white rounded-xl border border-[#E2E8F0]',
-        'shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]',
-        hover && 'transition-shadow duration-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08),0_2px_4px_rgba(0,0,0,0.04)]',
+        'bg-[var(--color-bg-primary)] rounded-xl border border-[var(--color-border)]',
+        'shadow-[var(--shadow-sm)]',
+        hover && 'transition-shadow duration-200 hover:shadow-[var(--shadow-md)]',
         paddingClasses[padding],
         className
       )}
@@ -49,11 +49,11 @@ export function StatCard({
     <Card className={cn('', className)}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm text-[#64748B]">{label}</p>
-          <p className="text-2xl font-semibold text-[#0F172A] mt-1">{value}</p>
+          <p className="text-sm text-[var(--color-text-muted)]">{label}</p>
+          <p className="text-2xl font-semibold text-[var(--color-text-primary)] mt-1">{value}</p>
         </div>
         {icon && (
-          <div className="p-2 rounded-lg bg-[#F1F5F9]">
+          <div className="p-2 rounded-lg bg-[var(--color-bg-tertiary)]">
             {icon}
           </div>
         )}
